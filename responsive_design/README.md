@@ -1,0 +1,1 @@
+Creating a responsive design using HTML and Css only.
