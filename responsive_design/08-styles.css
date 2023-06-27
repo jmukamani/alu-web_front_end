@@ -604,7 +604,7 @@
 
   @media (max-width: 767px) {
     .card-work .card-inner {
-        text-color: var(--color-white);
+        --text-color: var(--color-white);
         position: relative;
     }
 
