@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wikipedia Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function createSearchForm() {
+            var formHTML = `
+                <form id="searchForm">
+                    <input type="text" id="searchInput">
+                    <input type="submit" value="Search">
+                </form>
+                <ul id="resultsList"></ul>
+            `;
+            $('body').append(formHTML);
+
+            $('#searchForm').on('submit', function(event) {
+                event.preventDefault();
+                var searchValue = $('#searchInput').val();
+                queryWikipedia(searchValue);
+            });
+        }
+
+        function addNewArticle(id, title, snippet) {
+            var listItemHTML = `
+                <li>
+                    <p><span>${id} - </span><b>${title}</b></p>
+                    <p>${snippet}</p>
+                </li>
+            `;
+            $('#resultsList').append(listItemHTML);
+        }
+
+        function queryWikipedia(search) {
+            var data = {
+                action: 'query',
+                list: 'search',
+                srsearch: search,
+                format: 'json'
+            };
+
+            $.ajax({
+                url: 'https://en.wikipedia.org/w/api.php',
+                data: data,
+                dataType: 'jsonp',
+                success: function(response) {
+                    var results = response.query.search;
+                    $('#resultsList').empty();
+                    results.forEach(function(result) {
+                        addNewArticle(result.pageid, result.title, result.snippet);
+                    });
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            createSearchForm();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

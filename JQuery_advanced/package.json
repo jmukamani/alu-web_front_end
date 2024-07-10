@@ -1,0 +1,16 @@
+{
+  "name": "jquery_advanced",
+  "version": "1.0.0",
+  "description": "Learning Objectives\r Learn how to load jQuery from a CDN in a page\r Learn the different ways to create DOM elements with jQuery\r Learn how to modify elements\r Learn how to add new elements to a page with different positions\r Learn how to add a click handler on an element\r Learn how to send GET, POST, DELETE or any type of AJAX query with jQuery\r Learn how to create a pagination",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.1"
+  },
+  "devDependencies": {}
+}
